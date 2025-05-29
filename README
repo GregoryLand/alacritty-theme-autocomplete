@@ -1,0 +1,7 @@
+Just simple scripts to handle alacritty color schemes.
+
+You probably want:
+	alacritty-theme in /usr/bin/
+	alacritty-themes.bash in /etc/bash_completion.d/
+
+The script expects the themes to be saved in `/usr/share/alacritty/themes`

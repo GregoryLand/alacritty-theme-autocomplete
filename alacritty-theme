@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+theme_dir="/usr/share/alacritty/themes"
+
+print_themes() {
+  for thing in "$theme_dir"/*
+  do
+    if [[ -f "${thing}" ]]; then
+      filename=$(basename "${thing}")
+      echo "${filename%.toml}"
+    fi
+  done
+}
+
+# If no name is given then just print out all the themes in the directory
+if [[ $# -lt 1 ]]; then
+  print_themes | column
+  exit 0
+fi
+
+if [[ $1 == "--list-themes" ]]; then
+  print_themes
+  exit 0 
+fi
+
+theme_to_switch="$1"
+alacritty msg config "$(cat ${theme_dir}/${theme_to_switch}.toml)"
+
